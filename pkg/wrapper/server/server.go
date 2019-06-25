@@ -138,6 +138,7 @@ func scheduler(ctx context.Context, cfg *ServerConfig) {
 	command := sapp.NewSchedulerCommand()
 	command.SetArgs([]string{
 		"--kubeconfig", cfg.kubeConfigSystem,
+		fmt.Sprintf("--leader-elect=%v", cfg.LeaderElect),
 	})
 
 	go func() {
